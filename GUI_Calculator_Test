@@ -1,0 +1,54 @@
+# GUI-calculator.py
+
+from tkinter import *
+from tkinter import ttk, messagebox
+
+import tkinter.messagebox
+
+GUI = Tk() # T big k small
+GUI.title('Catfish')
+GUI.geometry('500x800')
+
+bg = PhotoImage(file='Catfish.png')
+
+BG = Label(GUI, image=bg)
+BG.pack()
+
+L = Label(GUI,text='Numbers of fish', font=(None,20))
+L.pack()
+
+v_quantity = StringVar() # Collect the messange
+E1= ttk.Entry(GUI, textvariable=v_quantity, font=(None,20))
+E1.pack()
+
+
+def Cal():
+	try:
+		quan = float(v_quantity.get())
+		calc = quan * 300 #300 baht per 1 Kg
+		messagebox.showinfo('Price per 1 Kg','Total Price {} Baht'.format(calc))
+		v_quantity.set(' ')
+		E1.focus()
+	except:
+		messagebox.showwarning('Wrong Data','Fill out only number')
+		v_quantity.set('1')
+
+B = ttk.Button(GUI, text='Calculate', command=Cal) #Button name
+B.pack(ipadx=30,ipady=20) #Button size
+
+GUI.mainloop() # Always RUN
+
+
+
+
+
+#def Cal():
+#	try:
+#		quan = float(v_quantity.get())
+#		calc = quan * 300 #300 baht per 1 Kg
+#		messagebox.showinfo('Price per 1 Kg','Total Price { } Baht'.format(calc))
+#		v_quantity.set(' ')
+#		E1.focus()
+#	except:
+#		messagebox.showearning('Wrong Data','Fill out only number')
+#		v_quantity.set('1')
